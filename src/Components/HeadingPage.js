@@ -1,28 +1,32 @@
 import { useState } from "react"
 import Modal from "./Modal/Modal"
 import Showingdata from "./ShowingData"
+import classes from './Modal/Modal.module.css'
 
 const HeadingPage=(props)=>{
     const [modalshow, setmodalshow]=useState(false)
+    const [edit,setedit]=useState('')
     const handleAddButton=()=>{
         setmodalshow(true)
     }
-    const SubmitButton=()=>{
-        console.log('sumitbutton is breing clicked')
+    const SubmitButton=(j)=>{
+        console.log('sumitbutton is breing clicked',j)
         setmodalshow(false)
-    }
-    const handleedit=(ele,item)=>{
+    }  
+    const editfunction=(ele)=>{
+        setedit(ele)
         setmodalshow(true)
-        // const j = document.getElementById('Name').value
-        // console.log(j)
+        
+
+
     }
-    
+
     return(
         <>
-            <h1>Bookmark Website</h1>
+            <h1 className={classes.h1}>Bookmark Website</h1>
             <button onClick={handleAddButton}>addBookmark</button>
-            {modalshow && <Modal onsubmit={SubmitButton}/>}
-            <Showingdata  onclick={(ele,item)=>handleedit()}></Showingdata>
+            {modalshow && <Modal props={edit}  onsubmit={SubmitButton}/>}
+            <Showingdata onedit={editfunction}  />
         </>
     ) 
 }

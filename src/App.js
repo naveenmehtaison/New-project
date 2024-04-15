@@ -1,9 +1,10 @@
 import React from 'react';
 import HeadingPage from './Components/HeadingPage';
 import DataProvider from './Components/Store/CartProvider';
+import classes from './Components/Modal/Modal.module.css'
 function App() {
   return (
-    <DataProvider>
+    <DataProvider className={classes.main} >
       <HeadingPage/>
     </DataProvider>
   );
